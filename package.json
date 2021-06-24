@@ -7,11 +7,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "psql": "docker exec -it kestrel_db_1 psql -U postgres",
-    "bash": "docker exec -it kestrel_web_1 bash",
+    "psql": "docker exec -it kestrel-cms_db_1 psql -U postgres",
+    "bash": "docker exec -it kestrel-cms_web_1 bash",
     "up": "docker-compose up",
-    "build": "docker-compose build", "//" : "used to rebuild the docker images -- useful if a new requirrements.txt is added",
-    "manage": "docker exec kestrel_web_1 python3 manage.py",
+    "build": "docker-compose build", "//" : "used to rebuild the docker images -- useful if a new requirements.txt is added",
+    "manage": "docker exec kestrel-cms_web_1 python3 manage.py",
     "test": "yarn manage test --force-color"
   }
 }
