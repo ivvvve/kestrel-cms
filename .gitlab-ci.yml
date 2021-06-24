@@ -17,7 +17,7 @@ build1:
   stage: build
   script:
     - echo "Do your build here"
-    - yarn build
+    - docker-compose build
 
 test1:
   stage: test
