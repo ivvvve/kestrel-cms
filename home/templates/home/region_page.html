@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/1a/Unite_the_Union.svg" style="width: 60px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Why join</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Who we are</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">What we do</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Campaigns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Legal Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">News & Events</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
+            <a style="color: white;" href='#'>Work, Voice, Pay</a>
+        </div>
+        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
+            <a style="color: white;" href='#'>Main</a>
+        </div>
+        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
+            <a style="color: white;" href='#'>JOIN</a>
+        </div>
+        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
+            <a style="color: white;" href='#'>MyUnite</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Unite West Midlands</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">{{ page.title }}</h1>
+        {{page.body|richtext}}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-grid justify-content-center">
+            <h1>I want to join</h1>
+            <p>Sign up today -- it's easy!</p>
+            <a class="btn btn-primary" style="border-radius: 100px;">Join now</a>
+        </div>
+        <div class="col-md-6 d-grid justify-content-center">
+            <h1>I'm a member</h1>
+            <p>All the support and advice you need</p>
+            <a class="btn btn-primary" style="border-radius: 100px;">Enter now</a>
+        </div>
+
+    </div>
+</div>
+
+{% image page.feed_image width-400 %}
+<h1></h1>
+
+{% for entry in blog_entries %}
+    {{ entry.title }}
+{% endfor %}
+
+{% endblock content %}
