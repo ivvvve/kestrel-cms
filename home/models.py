@@ -1,8 +1,11 @@
 from django.db import models
 
 from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 
 
 class HomePage(Page):
@@ -11,12 +14,16 @@ class HomePage(Page):
 class RegionPage(Page):
 
     twitter_handle = models.CharField(max_length=200)
-    body = RichTextField()
+    body = StreamField([
+        ('heading', blocks.CharBlock(form_classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock())
+    ])
 
     content_panels = Page.content_panels + [
         FieldPanel('twitter_handle'),
-        FieldPanel('body', classname="full"),
-
+        StreamFieldPanel('body')
     ]
 
     promote_panels = [

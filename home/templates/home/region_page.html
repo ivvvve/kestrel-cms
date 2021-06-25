@@ -46,30 +46,19 @@
 </nav>
 
 <div class="container">
-    <div class="d-flex justify-content-between">
-        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
-            <a style="color: white;" href='#'>Work, Voice, Pay</a>
-        </div>
-        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
-            <a style="color: white;" href='#'>Main</a>
-        </div>
-        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
-            <a style="color: white;" href='#'>JOIN</a>
-        </div>
-        <div class="bg-primary p-md-5 p-1 d-flex justify-content-center">
-            <a style="color: white;" href='#'>MyUnite</a>
-        </div>
-    </div>
-</div>
-
-<div class="container">
     <h1>Unite West Midlands</h1>
 </div>
 
 <div class="container">
     <div class="row">
         <h1 style="text-align: center;">{{ page.title }}</h1>
-        {{page.body|richtext}}
+        <p>Excepteur eiusmod amet ex voluptate adipisicing in nisi consequat deserunt Lorem mollit non in. Duis irure sint nulla tempor sit. Deserunt amet nulla voluptate culpa fugiat occaecat cupidatat amet fugiat enim. Aliquip do ut velit eu pariatur velit incididunt nisi. Qui commodo elit minim proident laboris mollit.</p>
+        <h2>News from {{page.title}}</h2>
+        <article style="display: grid; justify-content: center;">
+            {% for block in page.body %}
+                <section>{% include_block block %}</section>
+            {% endfor %}
+        </article>    
     </div>
 </div>
 
