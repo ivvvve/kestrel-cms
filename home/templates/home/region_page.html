@@ -46,7 +46,7 @@
 </nav>
 
 <div class="container">
-    <h1>Unite West Midlands</h1>
+    {% image page.header_image original %}
 </div>
 
 <div class="container">
@@ -77,12 +77,5 @@
 
     </div>
 </div>
-
-{% image page.feed_image width-400 %}
-<h1></h1>
-
-{% for entry in blog_entries %}
-    {{ entry.title }}
-{% endfor %}
 
 {% endblock content %}
