@@ -13,6 +13,8 @@
     "build": "docker-compose build", "//" : "used to rebuild the docker images -- useful if a new requirements.txt is added",
     "manage": "docker exec kestrel-cms_web_1 python3 manage.py",
     "test": "yarn manage test --force-color",
-    "nukedocker": "docker system prune -af; docker volume prune -f"
+    "nukedocker": "docker system prune -af; docker volume prune -f",
+    "makemigrations": "yarn build; yarn manage makemigrations; bash sync_migrations.sh",
+    "migrate": "yarn makemigrations; yarn manage migrate"
   }
 }
