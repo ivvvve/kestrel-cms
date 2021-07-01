@@ -3,7 +3,7 @@ from django.db import models
 from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import StreamField, RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel, TabbedInterface, ObjectList
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
@@ -12,6 +12,7 @@ from modelcluster.fields import ParentalKey
 
 class RegionPage(Page):
 
+    # content panels
     header_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -29,18 +30,30 @@ class RegionPage(Page):
             ('link_text', blocks.CharBlock()),
             ('link', blocks.URLBlock()),
         ]))
-    ],
-    blank=True
-    )
+    ],blank=True)
+    # menu panels
+    menu = StreamField([
+        ('menu_item', blocks.StructBlock([
+            ('link_text', blocks.CharBlock()),
+            ('link', blocks.URLBlock()),
+        ]))
+    ],blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = [
         ImageChooserPanel('header_image'),
-        StreamFieldPanel('body')
+        FieldPanel('standfirst', classname="full"),
+        StreamFieldPanel('body'),
+    ]
+    menu_panels = [
+        StreamFieldPanel('menu'),
     ]
 
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-    ]
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(menu_panels, heading='Site Menu'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
 
 class ContactPage(Page):
 
@@ -72,7 +85,6 @@ class ContactGroups(ClusterableModel):
         FieldPanel('name'),
         InlinePanel('related_contact_details'),
     ]
-
 
 class ContactDetails(Orderable):
     id = models.AutoField(primary_key=True)
