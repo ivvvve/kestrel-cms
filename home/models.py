@@ -19,9 +19,16 @@ class RegionPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    standfirst = RichTextField(blank=True)
     body = StreamField([
         ('paragraph', blocks.RichTextBlock()),
-        ('embed', EmbedBlock())
+        ('embed', EmbedBlock()),
+        ('link', blocks.StructBlock([
+            ('title', blocks.CharBlock()),
+            ('body', blocks.RichTextBlock()),
+            ('link_text', blocks.CharBlock()),
+            ('link', blocks.URLBlock()),
+        ]))
     ],
     blank=True
     )
