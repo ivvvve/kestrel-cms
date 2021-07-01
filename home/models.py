@@ -8,10 +8,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 
-
-class HomePage(Page):
-    pass
-
 class RegionPage(Page):
 
     twitter_handle = models.CharField(max_length=200)
@@ -29,11 +25,6 @@ class RegionPage(Page):
         related_name='+'
     )
 
-    # EXAMPLE TWEETS
-    # https://twitter.com/UniteWestMids/status/1408412825857445889
-    # https://twitter.com/unitetheunion/status/1408408131894333442
-    # https://twitter.com/unite_west/status/1408341874830622720
-
     content_panels = Page.content_panels + [
         ImageChooserPanel('header_image'),
         FieldPanel('twitter_handle'),
@@ -44,5 +35,3 @@ class RegionPage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
     
-    parent_page_types = ['home.Homepage']
-    subpage_types = []
