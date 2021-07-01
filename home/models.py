@@ -44,7 +44,7 @@ class ContactPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    body = RichTextField()
+    body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('header_image'),
@@ -59,7 +59,7 @@ class ContactPage(Page):
 class ContactGroups(ClusterableModel):
     id = models.AutoField(primary_key=True)
     page = ParentalKey(ContactPage, on_delete=models.CASCADE, related_name='related_contact_groups')
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name='Contact Group Name')
     
     panels = [
         FieldPanel('name'),
@@ -70,8 +70,14 @@ class ContactGroups(ClusterableModel):
 class ContactDetails(Orderable):
     id = models.AutoField(primary_key=True)
     page = ParentalKey(ContactGroups, on_delete=models.CASCADE, related_name='related_contact_details')
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name='Full Name')
+    job = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    telephone = models.CharField(max_length=255, blank=True, null=True)
     
     panels = [
-        FieldPanel('name')
+        FieldPanel('name'),
+        FieldPanel('job'),
+        FieldPanel('telephone'),
+        FieldPanel('email'),
     ]
