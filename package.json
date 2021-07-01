@@ -15,6 +15,7 @@
     "test": "yarn manage test --force-color",
     "nukedocker": "docker system prune -af; docker volume prune -f",
     "makemigrations": "bash sync_migrations.sh",
+    "makemigrations-dry": "bash sync_migrations_dry.sh",
     "migrate": "yarn manage migrate"
   }
 }
