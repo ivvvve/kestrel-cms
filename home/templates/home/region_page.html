@@ -2,6 +2,7 @@
 {% load static %}
 {% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
+{% load wagtailadmin_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -19,62 +20,41 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% for block in page.menu %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Why join</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Who we are</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">What we do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Campaigns</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Legal Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News & Events</a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     {% image page.header_image original %}
 </div>
 
 <div class="container">
     <div class="row">
+        <div class="col-md-6 offset-md-3">
+
         <h1 style="text-align: center;">{{ page.title }}</h1>
-        <p>Excepteur eiusmod amet ex voluptate adipisicing in nisi consequat deserunt Lorem mollit non in. Duis irure sint nulla tempor sit. Deserunt amet nulla voluptate culpa fugiat occaecat cupidatat amet fugiat enim. Aliquip do ut velit eu pariatur velit incididunt nisi. Qui commodo elit minim proident laboris mollit.</p>
+        {{page.standfirst|richtext}}
         <h2>News from {{page.title}}</h2>
         <article style="display: grid; justify-content: center;">
             {% for block in page.body %}
-                <section>{% include_block block %}</section>
-            {% endfor %}
+                <section class="block-{{block.block_type}}">                    
+                    {% if block.block_type == 'link' %}
+                        <h3>{{ block.value.title }}</h3>
+                        {{block.value.body}}
+                        <a href="{{block.value.link}}">{{block.value.link_text}}</a>
+                    {% else %}
+                        {% include_block block %}
+                    {% endif %}
+                </section>
+        {% endfor %}
         </article>    
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 d-grid justify-content-center">
-            <h1>I want to join</h1>
-            <p>Sign up today -- it's easy!</p>
-            <a class="btn btn-primary" style="border-radius: 100px;">Join now</a>
         </div>
-        <div class="col-md-6 d-grid justify-content-center">
-            <h1>I'm a member</h1>
-            <p>All the support and advice you need</p>
-            <a class="btn btn-primary" style="border-radius: 100px;">Enter now</a>
-        </div>
-
     </div>
 </div>
 
