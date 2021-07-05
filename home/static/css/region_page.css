@@ -1,4 +1,4 @@
-/* .nav-wrap, .block-link {
+.nav-wrap, .block-link {
     background-color: #006C88;
     color: white;
 }
@@ -12,7 +12,6 @@
     padding: 20px;
 }
 
-
 .block-link>a::after {
     content: " ➔";
-} */
+}
