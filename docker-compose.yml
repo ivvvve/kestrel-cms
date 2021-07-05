@@ -18,9 +18,11 @@ services:
     command: python manage.py runserver 0.0.0.0:80
     volumes:
       - .:/code
+      - web-media:/app/media
     ports:
       - "80:80"
     depends_on:
       - db
 volumes:
   db-data:
+  web-media:
