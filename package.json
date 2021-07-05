@@ -18,7 +18,7 @@
     "makemigrations": "bash sync_migrations.sh",
     "makemigrations-dry": "bash sync_migrations_dry.sh",
     "migrate": "yarn manage migrate",
-    "watch-templates": "yarn watch 'bash copy_templates.sh' home/templates/"
+    "watch-templates": "yarn watch 'bash copy_templates.sh' ."
   },
   "devDependencies": {
     "watch": "^1.0.2"
