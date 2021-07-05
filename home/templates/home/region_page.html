@@ -13,24 +13,46 @@
         <a class="navbar-brand" href="#">
             <img src="https://upload.wikimedia.org/wikipedia/en/1/1a/Unite_the_Union.svg" style="width: 60px;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% for block in page.menu %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="d-md-none">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% for block in page.menu %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
 
 {% image page.header_image original style="max-width: 100%; object-fit: contain; height: auto;" %}
+
+<div class="bg-light d-none d-md-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <nav class="navbar navbar-expand-md navbar-light ">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            {% for block in page.menu %}
+                            <li class="nav-item">
+                                <a class="nav-link" style="padding-left: 0px;"target="blank" rel="noopener noreferrer" href="{{block.value.link}}">{{block.value.link_text}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </nav>         
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
