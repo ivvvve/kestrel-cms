@@ -10,12 +10,17 @@
     "psql": "docker exec -it kestrel-cms_db_1 psql -U postgres",
     "bash": "docker exec -it kestrel-cms_web_1 bash",
     "up": "docker-compose up",
-    "build": "docker-compose build", "//" : "used to rebuild the docker images -- useful if a new requirements.txt is added",
+    "build": "docker-compose build",
+    "//": "used to rebuild the docker images -- useful if a new requirements.txt is added",
     "manage": "docker exec kestrel-cms_web_1 python3 manage.py",
     "test": "yarn manage test --force-color",
     "nukedocker": "docker system prune -af; docker volume prune -f",
     "makemigrations": "bash sync_migrations.sh",
     "makemigrations-dry": "bash sync_migrations_dry.sh",
-    "migrate": "yarn manage migrate"
+    "migrate": "yarn manage migrate",
+    "watch-templates": "yarn watch 'bash copy_templates.sh' home/templates/"
+  },
+  "devDependencies": {
+    "watch": "^1.0.2"
   }
 }
