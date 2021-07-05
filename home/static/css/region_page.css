@@ -15,3 +15,8 @@
 .block-link>a::after {
     content: " ➔";
 }
+
+.nav-wrap .navbar-nav {
+    flex-direction: row;
+    gap: 10px;
+}

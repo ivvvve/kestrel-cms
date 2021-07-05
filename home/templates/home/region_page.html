@@ -8,51 +8,46 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/region_page.css' %}">
 {% endblock %}
 
-{% block body_class %}template-homepage{% endblock %}
-
 {% block content %}
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="https://upload.wikimedia.org/wikipedia/en/1/1a/Unite_the_Union.svg" style="width: 60px;">
         </a>
-        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+        
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="d-md-none">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% for block in page.menu %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+
+        <div class="collapse navbar-collapse d-md-none" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% for block in page.menu %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </nav>
 
 {% image page.header_image original style="max-width: 100%; object-fit: contain; height: auto;" %}
 
-<div class="bg-light d-none d-md-block">
+<div class="nav-wrap">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <nav class="navbar navbar-expand-md navbar-light ">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            {% for block in page.menu %}
-                            <li class="nav-item">
-                                <a class="nav-link" style="padding-left: 0px;"target="blank" rel="noopener noreferrer" href="{{block.value.link}}">{{block.value.link_text}}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </nav>         
+                <nav class="navbar d-none d-md-block">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% for block in page.menu %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -62,7 +57,7 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
 
-        <h1 style="text-align: center;">{{ page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         {{page.standfirst|richtext}}
         <h2>News from {{page.title}}</h2>
         <article style="display: grid; justify-content: center;">
