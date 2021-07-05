@@ -39,7 +39,7 @@ class RegionPage(Page):
         ]))
     ],blank=True)
 
-    content_panels = [
+    content_panels = Page.content_panels + [
         ImageChooserPanel('header_image'),
         FieldPanel('standfirst', classname="full"),
         StreamFieldPanel('body'),
