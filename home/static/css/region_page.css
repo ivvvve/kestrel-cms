@@ -1,9 +1,9 @@
-.nav-wrap, .block-link {
+.nav-wrap, .block-link, .nav-item, #navbarSupportedContent {
     background-color: #006C88;
     color: white;
 }
 
-.block-link>a, .nav-wrap a, .nav-wrap a:hover {
+.block-link>a, .nav-wrap a, .nav-wrap a:hover, .nav-item a {
     color: white;
     text-decoration: underline;
 }

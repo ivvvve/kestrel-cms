@@ -10,28 +10,33 @@
 
 {% block content %}
 
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="https://upload.wikimedia.org/wikipedia/en/1/1a/Unite_the_Union.svg" style="width: 60px;">
-        </a>
-        
-        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 px-0 pb-0">
+            <nav class="navbar navbar-expand-md navbar-light pb-0">
+                <a class="navbar-brand p-2 pb-3" href="#">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1a/Unite_the_Union.svg" style="width: 60px;">
+                </a>
 
-        <div class="collapse navbar-collapse d-md-none" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% for block in page.menu %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
-                </li>
-                {% endfor %}
-            </ul>
+                <button class="navbar-toggler d-md-none m-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto pb-2 mb-lg-0">
+                        {% for block in page.menu %}
+                        <li class="nav-item p-2">
+                            <a href="{{block.value.link}}">{{block.value.link_text}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
         </div>
     </div>
-</nav>
+</div>
 
 {% image page.header_image original style="max-width: 100%; object-fit: contain; height: auto;" %}
 
@@ -42,7 +47,7 @@
                 <nav class="navbar d-none d-md-block">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% for block in page.menu %}
-                        <li class="nav-item">
+                        <li class="nav-item px-2">
                             <a class="nav-link" href="{{block.value.link}}">{{block.value.link_text}}</a>
                         </li>
                         {% endfor %}
@@ -53,7 +58,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container p-2">
     <div class="row">
         <div class="col-md-6 offset-md-3">
 
